@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{%block title%}Beit Haam | Dishes {%endblock%}
+
+{%block content%}
+
+    {% for dish in dishes %}
+
+        <h5>{{dish.name}}</h5>
+        <img src="{{dish.image}}" style="height: 320px;">
+        <a href="{% url 'edit_dish' id=dish.id %}" class="btn btn-outline-secondary btn-sm">Edit</a>
+        <a href="{% url 'delete_dish' id=dish.id %}" class="btn btn-outline-danger btn-sm">Delete</a>
+    {% endfor %}
+    <div class="">
+        <a href="{% url 'add_dish' %}" class="btn btn-outline-primary btn-sm">Add</a>
+    </div>
+    
+{%endblock%}

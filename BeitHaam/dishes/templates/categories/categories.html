@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{%block title%}Beit Haam | Categories{%endblock%}
+
+{%block content%}
+
+    {% for cat in cats %}
+        <h5>{{cat.name}}</h5>
+        <img src="{{cat.image}}" style="height: 320px;">
+        <a href="{% url 'edit_category' id=cat.id %}" class="btn btn-outline-secondary btn-sm">Edit</a>
+        <a href="{% url 'delete_category' id=cat.id %}" class="btn btn-outline-danger btn-sm">Delete</a>
+    {% endfor %}
+    <div class="">
+        <a href="{% url 'add_category' %}" class="btn btn-outline-primary btn-sm">Add</a>
+    </div>
+    
+{%endblock%}

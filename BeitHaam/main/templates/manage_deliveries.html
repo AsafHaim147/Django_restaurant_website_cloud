@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{%block title%}Beit Haam | Manage deliveries{%endblock%}
+
+{%block content%}
+
+    {% for delivery in deliveries %}
+            <h5>order id: {{delivery.cart_id.id}}</h5>
+            <br/>
+            <h5>address: {{delivery.address}}</h5>
+            <h5>comment: {{delivery.comment}}</h5>
+            <h5>created: {{delivery.created}}</h5>
+            {% if delivery.is_delivered == None %}
+                <a href="{% url 'delivery_failed' id=delivery.cart_id.id %}" class="btn btn-outline-danger btn-sm">Failed</a>
+                <a href="{% url 'delivery_completed' id=delivery.cart_id.id %}" class="btn btn-outline-success btn-sm">Completed</a>
+            {% else %}
+            delivery is 
+                {% if delivery.is_delivered == True %}
+                    completed ☺
+                {% else %}
+                    failed...
+                {% endif %}
+            {% endif %}
+    {% endfor %}
+    <div class="">
+    </div>
+    
+{%endblock%}

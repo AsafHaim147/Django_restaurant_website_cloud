@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{%block title%} Beit Haam | Edit dish {%endblock%}
+
+{%block content%}
+<form action ="{{edit_dish}}" method="POST">
+    {% csrf_token%}
+    {{form.as_p}}
+    <select name="category" id="category">
+        {% for cat in cats%}
+            {% if dish.category.id == cat.id %}
+                <option value="{{cat.id}}" selected="selected">{{cat.name}}</option>
+            {%else%}
+            <option value="{{cat.id}}">{{cat.name}}</option>
+            {% endif %}
+        {% endfor %}
+    </select>
+    <button type="submit" name="add">Save!</button>
+</form>
+{%endblock%}

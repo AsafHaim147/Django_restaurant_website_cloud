@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %} Beit Haam | My orders {% endblock %}
+
+{% block content %}
+
+    {% for order in orders %}
+    <div class="card w-50">
+        <div class="card-body">
+          <h5 class="card-title">order id: {{order.id}}</h5>
+          <a href="{% url 'view_order' id=order.id%}" class="btn btn-outline-secondary">View order</a>
+        </div>
+      </div>
+    {% endfor %}
+
+
+{% endblock %}

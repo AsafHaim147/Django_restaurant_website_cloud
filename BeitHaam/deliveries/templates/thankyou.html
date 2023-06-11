@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %} Beit Haam | Thank You! {% endblock %}
+
+{% block content %}
+    <div class="fluid-container">
+     <p class="lead">Thanks, We appreciate your order!</p>
+      <h5>order information:</h5>
+      <p>delivery id: {{delivery.pk}}</p>
+      <p>time created: {{delivery.created}}</p>
+      <p>total price: {{total}}</p>
+    </div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{%block title%} Beit Haam | Edit category {%endblock%}
+
+{% load crispy_forms_tags %}
+
+{%block content%}
+<form method="POST" class="form-gorup">
+    {% csrf_token %}
+    {{form|crispy}}
+    <button type="submit", name="save">Save</button>
+</form>
+
+{%endblock%}

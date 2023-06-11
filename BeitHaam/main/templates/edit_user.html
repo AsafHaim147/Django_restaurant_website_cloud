@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title%} Beit Haam | Edit user info {% endblock %}
+
+{% block content%}
+<form method="POST" class="form-gorup">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit", name="save">Save</button>
+</form>
+{% endblock %}

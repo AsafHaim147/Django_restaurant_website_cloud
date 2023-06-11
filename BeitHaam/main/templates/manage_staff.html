@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{%block title%}Beit Haam | Manage staff{%endblock%}
+
+{%block content%}
+
+    {% for user in users %}
+            <h5>{{user.username}}</h5>
+            <br/>
+            is staff: {{user.is_staff}}
+            <a href="{% url 'change_staff_status' id=user.id %}" class="btn btn-outline-danger btn-sm">Change status</a>
+
+    {% endfor %}
+    <div class="">
+    </div>
+    
+{%endblock%}

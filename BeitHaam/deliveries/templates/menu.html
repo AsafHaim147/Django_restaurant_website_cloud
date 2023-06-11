@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{%block title%}Beit Haam | Menu {%endblock%}
+
+{%block content%}
+{% if user.is_authenticated == False %}
+    <p class="lead">Please <a href="{% url 'login' %}">Login</a> to place an order ☺</p>
+{% endif %}
+    {% for cat in cats %}
+    <div class="container-fluid">
+        <h3 class="display-1">{{cat.name}}</h3>
+        {% for dish in dishes %}
+            {% if dish.category == cat %}
+            <div class="card" style="width: 18rem;">
+                <img src="{{dish.image}}" class="card-img-top" alt="{{dish.name}}">
+                <div class="card-body">
+                    <h5 class="card-title">{{dish.name}}</h5>
+                    <p class="card-text"> price: {{dish.price}}</p>
+                    {% if request.user.is_authenticated %}
+                        <form  action="{% url 'add_to_cart' id=dish.id %}" method="post" class="form-gorup">
+                            {% csrf_token %}
+                            <p class="lead">amount:</p>
+                            <select name="amount" class="form-select" aria-label="Default select example">
+                                {%for i in '012345678' %}
+                                    <option value="{{forloop.counter}}">{{forloop.counter}}</option>
+                                {% endfor %}
+                            </select>
+                            <button type="submit" class="btn btn-primary">Add to cart</button>
+                        </form>
+                    {% endif %}
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+    </div>
+{%endblock%}

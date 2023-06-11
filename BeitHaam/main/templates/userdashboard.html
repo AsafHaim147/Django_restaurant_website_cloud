@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{%block title%}
+Beit Haam | Dashboard
+{% endblock %}
+{%block content%}
+
+first name: <p>{{user.first_name}}</p>
+last name: <p>{{user.last_name}}</p>
+username: <p>{{user.username}}</p>
+email: <p>{{user.email}}</p>
+{% if user.is_staff %}
+    <a href="{% url 'dishes' %}" class="btn btn-outline-secondary">Manage dishes</a>
+    <a href="{% url 'categories' %}" class="btn btn-outline-secondary">Manage categories</a>
+    <a href="{% url 'toppings' %}" class="btn btn-outline-secondary">Manage Toppings</a>
+    <a href="{% url 'manage_staff' %}" class="btn btn-outline-secondary">Manage Staff</a>
+    <a href="{% url 'manage_deliveries' %}" class="btn btn-outline-secondary">Manage Orders</a>
+{% endif %}
+<div class="">
+    <a href="/logout" class="btn btn-outline-danger">log out</a>
+    <a href="{% url 'edit_user' %}" class="btn btn-outline-secondary">Edit info</a>
+    <a href="{% url 'view_orders' %}" class="btn btn-outline-secondary">My Orders</a>
+</div>
+
+
+
+
+
+
+{% endblock %}

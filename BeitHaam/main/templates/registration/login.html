@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{%block title%}
+Beit Haam | Login
+{% endblock %}
+
+
+{% block content %}
+<form class="form-group" method="POST">
+    {%csrf_token%}
+    <div class="">
+        <input type="text" name="username" placeholder="Username">
+    </div>
+    <div class="">
+        <input type="password" name="password" placeholder="Password">
+    </div>
+    <div class="">
+    new here? <a href="{% url 'register' %}">Sign up!</a>
+    <p></p>
+    </div>  
+    <button type="submit">Log in!</button>
+</form>
+{% endblock %}

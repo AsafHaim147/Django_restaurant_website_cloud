@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %} Beit Haam | View order {% endblock %}
+
+{% block content %}
+
+<p class="lead">Order id: {{cart_id}}</p>
+{% for item in items %}
+    <img src="/{{item.dish_id.image}}" alt="{{item.dish_id.name}}" style="width:320px"/>
+    <p>dish name: {{item.dish_id.name}}</p>
+    <p>amount: {{item.amount}}</p>
+{% endfor %}
+    <p>total price = {{total}}</p>
+{% endblock %}
